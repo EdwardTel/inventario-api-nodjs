@@ -18,13 +18,13 @@ Este software implementa un sistema básico con roles de **Administrador** y **C
 
 ## Tecnologías
 
--Node.js
--Express
--Sequelize (MySQL / PostgreSQL compatible)
--JWT para autenticación
--bcryptjs para hash de contraseñas
--morgan para logs
--apidoc para documentación
+- Node.js
+- Express
+- Sequelize (MySQL / PostgreSQL compatible)
+- JWT para autenticación
+- bcryptjs para hash de contraseñas
+- morgan para logs
+- apidoc para documentación
 
 ---
 
@@ -32,28 +32,27 @@ Este software implementa un sistema básico con roles de **Administrador** y **C
 
 1. Clona el repositorio:
 
--git clone <TU_REPOSITORIO>
--cd inventario-api
+- git clone <TU_REPOSITORIO>
+- cd inventario-api
 
 2. Instala dependencias:
 
 - `npm install`
 
-- Configura variables de entorno (opcional, por defecto se usan valores internos en database.js y auth.js):
+Configura variables de entorno (opcional, por defecto se usan valores internos en database.js y auth.js):
 
-JWT_SECRET=mi_super_secreto
-JWT_EXPIRES_IN=7d
-DB_HOST=localhost
-DB_USER=root
-DB_PASS=password
-DB_NAME=inventario
-DB_DIALECT=mysql
-PORT=3000
-
+- JWT_SECRET=mi_super_secreto
+- JWT_EXPIRES_IN=7d
+- DB_HOST=localhost
+- DB_USER=root
+- DB_PASS=password
+- DB_NAME=inventario
+- DB_DIALECT=mysql
+- PORT=3000
 
 3. Sincroniza base de datos y agrega datos iniciales (opcional ejecutando seed.js):
 
-`node seed.js`
+- `node seed.js`
 
 Esto creará:
 
@@ -64,10 +63,10 @@ Esto creará:
 - 5 productos de ejemplo
 
 4. Ejecutar servidor
-`npm start`
+- `npm start`
 
 O con nodemon:
-`nodemon server.js`
+- `nodemon server.js`
 
 El servidor escuchará en http://localhost:3000. (o según tu configuración)
 
@@ -76,9 +75,9 @@ El servidor escuchará en http://localhost:3000. (o según tu configuración)
 ## Uso de la API
 1. Usuarios
 
-- **Registrar usuario**
-POST /api/users/register
-Body JSON:
+**Registrar usuario**
+- POST /api/users/register
+- Body JSON:
 ```
 {
   "name": "cliente4",
@@ -87,8 +86,8 @@ Body JSON:
   "role": "client"
 }
 ```
-- **Login**
-POST /api/users/login
+**Login**
+- POST /api/use- rs/login
 Body JSON:
 ```
 {
@@ -99,25 +98,25 @@ Body JSON:
 
 **Response incluirá un token para usar en Authorization header**
 
-- **Listar usuarios (solo admin)**
-GET /api/users
-Headers: Authorization: Bearer <TOKEN_ADMIN>
+**Listar usuarios (solo admin)**
+- GET /api/users
+- Headers: Authorization: Bearer <TOKEN_ADMIN>
 
-- **Actualizar usuario (solo admin)**
-PUT /api/users/:id
-Headers: Authorization: Bearer <TOKEN_ADMIN>
-Body JSON con campos a modificar.
+**Actualizar usuario (solo admin)**
+- PUT /api/users/:id
+- Headers: Authorization: Bearer <TOKEN_ADMIN>
+- Body JSON con campos a modificar.
 
-- **Eliminar usuario (solo admin)**
-DELETE /api/users/:id
-Headers: Authorization: Bearer <TOKEN_ADMIN>
+**Eliminar usuario (solo admin)**
+- DELETE /api/users/:id
+- Headers: Authorization: Bearer <TOKEN_ADMIN>
 
 2. Productos
 
-- **Crear producto (solo admin)**
-POST /api/products
-Headers: Authorization: Bearer <TOKEN_ADMIN>
-Body JSON:
+**Crear producto (solo admin)**
+- POST /api/products
+- Headers: Authorization: - Bearer <TOKEN_ADMIN>
+- Body JSON:
 ```
 {
   "lote": "L001",
@@ -127,25 +126,25 @@ Body JSON:
 }
 ```
 
-- **Listar productos (cliente y admin)**
-GET /api/products
-Headers: Authorization: Bearer <TOKEN_CLIENT o TOKEN_ADMIN>
+**Listar productos (cliente y admin)**
+- GET /api/products
+- Headers: Authorization: Bearer <TOKEN_CLIENT o TOKEN_ADMIN>
 
-- **Actualizar producto (solo admin)** 
-PUT /api/products/:id
-Headers: Authorization: Bearer <TOKEN_ADMIN>
-Body JSON con campos a modificar.
+**Actualizar producto (solo admin)** 
+- PUT /api/products/:id
+- Headers: Authorization: Bearer <TOKEN_ADMIN>
+- Body JSON con campos a modificar.
 
-- **Eliminar producto (solo admin)**
-DELETE /api/products/:id
-Headers: Authorization: Bearer <TOKEN_ADMIN>
+**Eliminar producto (solo admin)**
+- DELETE /api/products/:id
+- Headers: Authorization: Bearer <TOKEN_ADMIN>
 
 3. Órdenes
 
-- **Crear orden (Cliente)**
-POST /api/orders
-Headers: Authorization: Bearer <TOKEN_CLIENT>
-Body JSON:
+**Crear orden (Cliente)**
+- POST /api/orders
+- Headers: Authorization: Bearer <TOKEN_CLIENT>
+- Body JSON:
 ```
 {
   "items": [
@@ -154,47 +153,45 @@ Body JSON:
   ]
 }
 ```
-
-- **Listar órdenes**
-GET /api/orders
-Headers: Authorization: Bearer <TOKEN>
+**Listar órdenes**
+- GET /api/orders
+- Headers: Authorization: Bearer <TOKEN>
 
 **Admin ve todas**
 **Cliente ve solo las propias**
 
 ## Logs y errores
 
-Se usan logs con morgan (dev) para ver solicitudes HTTP en consola.
-
-Todos los errores pasan por middleware de captura de errores para unificar respuesta.
+- Se usan logs con morgan (dev) para ver solicitudes HTTP en consola.
+- Todos los errores pasan por middleware de captura de errores para unificar respuesta.
 
 ## Validaciones y seguridad
 
-JWT asegura autenticación y autorización.
-Hash de contraseñas con bcrypt.
-Middleware authorize limita endpoints según rol (admin / client).
-Validaciones básicas de existencia de campos y tipos de datos.
+- JWT asegura autenticación y autorización.
+- Hash de contraseñas con bcrypt.
+- Middleware authorize limita endpoints según rol (admin / client).
+- Validaciones básicas de existencia de campos y tipos de datos.
 
 ## Documentación con apidoc
 
 Instalar apidoc:
-`npm install -g apidoc`
+- `npm install -g apidoc`
 
 Generar documentación:
-`npm run apidoc`
+- `npm run apidoc`
 
 Abrir en el navegador:
-`docs/api/index.html`
+- `docs/api/index.html`
 
 La documentación incluye todas las rutas: usuarios, productos, órdenes.
 
 ## Estructura de carpetas
-/controllers   -> Lógica de negocio
-/models        -> Modelos Sequelize
-/routes        -> Rutas de la API
-/middlewares   -> Autenticación, autorización y logs
-/config        -> Conexión a la base de datos
-/seed.js       -> Datos iniciales
-/server.js     -> Servidor principal
-/docs/api      -> Documentación generada por apidoc
+- /controllers   -> Lógica de negocio
+- /models        -> Modelos Sequelize
+- /routes        -> Rutas de la API
+- /middlewares   -> Autenticación, autorización y logs
+- /config        -> Conexión a la base de datos
+- /seed.js       -> Datos iniciales
+- /server.js     -> Servidor principal
+- /docs/api      -> Documentación generada por apidoc
 
