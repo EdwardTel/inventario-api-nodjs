@@ -32,7 +32,7 @@ Este software implementa un sistema básico con roles de **Administrador** y **C
 
 1. Clona el repositorio:
 
-- git clone <TU_REPOSITORIO>
+- git clone https://github.com/EdwardTel/inventario-api-nodjs
 - cd inventario-api
 
 2. Instala dependencias:
