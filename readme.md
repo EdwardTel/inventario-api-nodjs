@@ -87,7 +87,7 @@ El servidor escuchará en http://localhost:3000. (o según tu configuración)
 }
 ```
 **Login**
-- POST /api/use- rs/login
+- POST /api/users/login
 Body JSON:
 ```
 {
